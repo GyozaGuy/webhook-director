@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'em-websocket', '~> 0.5.3'
+gem 'json', '~> 2.6'
 gem 'open3', '~> 0.1.1'
 gem 'puma', '~> 5.5'
 gem 'rake', '~> 13.0'
