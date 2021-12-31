@@ -19,6 +19,7 @@
     "start:watch": "nodemon src/index.js --exec 'npm start'"
   },
   "dependencies": {
+    "js-yaml": "^4.1.0",
     "ws": "^8.4.0"
   }
 }
