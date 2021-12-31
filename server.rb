@@ -34,7 +34,7 @@ end
 
 Thread.new do
   EM.run do
-    EM::WebSocket.run(host: '0.0.0.0', port: 8080) do |ws|
+    EM::WebSocket.run(host: '0.0.0.0', port: 4568) do |ws|
       ws.onopen do
         sid = channel.subscribe do |message|
           ws.send JSON(message).to_s

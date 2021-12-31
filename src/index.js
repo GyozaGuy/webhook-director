@@ -20,12 +20,12 @@ if (!app.requestSingleInstanceLock()) {
 
 function reconnect() {
   while (!ws) {
-    ws = new WebSocket('ws://localhost:8080');
+    ws = new WebSocket('ws://localhost:4568');
   }
 }
 
 app.on('ready', () => {
-  ws = new WebSocket('ws://localhost:8080');
+  ws = new WebSocket('ws://localhost:4568');
 
   ws.on('close', () => {
     reconnect();
