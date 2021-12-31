@@ -2,7 +2,7 @@ const { app, Menu, Notification, Tray } = require('electron');
 const path = require('path');
 const { WebSocket } = require('ws');
 
-const APP_ICON = path.join(__dirname, 'img', 'appicon.png');
+const APP_ICON = path.join(__dirname, 'img', 'appIcon.png');
 let tray; // NOTE: This is defined here to prevent the tray icon from disappearing when this variable is garbage collected
 let ws;
 
