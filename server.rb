@@ -21,6 +21,8 @@ post '/' do
   case type
   when 'github'
     notification_content = Parsers.github(body)
+  when 'plex'
+    notification_content = Parsers.plex(body)
   else
     puts "Unknown type: #{type}"
   end
