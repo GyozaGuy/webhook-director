@@ -1,6 +1,5 @@
 module Parsers
-  def self.plex(content)
-    p content
+  def self.plex(_content)
     {
       content: '',
       source: 'Plex',
