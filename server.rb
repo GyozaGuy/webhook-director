@@ -3,14 +3,6 @@ require 'json'
 require 'sinatra'
 require_relative 'parsers/parsers'
 
-# All parsers reduce webhook contents into the following format:
-# {
-#   content: 'Notification content',
-#   source: 'sourcename',
-#   title: 'Notification Title'
-#   url: 'URL to open',
-# }
-
 channel = EM::Channel.new
 
 post '/' do
