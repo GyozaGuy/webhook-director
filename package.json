@@ -1,0 +1,24 @@
+{
+  "name": "webhook-director",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "git@github.com:GyozaGuy/webhook-director.git",
+  "author": "GyozaGuy <gyozaguy@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^16.0.5",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1"
+  },
+  "scripts": {
+    "lint": "eslint src",
+    "start": "electron .",
+    "start:watch": "nodemon src/index.js --exec 'npm start'"
+  },
+  "dependencies": {
+    "ws": "^8.4.0"
+  }
+}
