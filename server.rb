@@ -1,6 +1,15 @@
 require 'em-websocket'
 require 'json'
 require 'sinatra'
+require_relative 'parsers/parsers'
+
+# All parsers reduce webhook contents into the following format:
+# {
+#   content: 'Notification content',
+#   source: 'sourcename',
+#   title: 'Notification Title'
+#   url: 'URL to open',
+# }
 
 channel = EM::Channel.new
 
@@ -11,7 +20,7 @@ post '/' do
 
   case type
   when 'github'
-    notification_content = github(body)
+    notification_content = Parsers.github(body)
   else
     puts "Unknown type: #{type}"
   end
@@ -19,25 +28,6 @@ post '/' do
   channel.push(notification_content) unless notification_content.nil?
 
   204
-end
-
-# PARSERS
-#
-# All parsers reduce webhook contents into the following format:
-# {
-#   content: 'Notification content',
-#   source: 'sourcename',
-#   title: 'Notification Title'
-#   url: 'URL to open',
-# }
-
-def github(content)
-  {
-    content: '',
-    source: 'GitHub',
-    title: '',
-    url: content.dig('repository', 'html_url')
-  }
 end
 
 Thread.new do
