@@ -1,10 +1,20 @@
 module Parsers
-  def self.github(content)
+  def self.github(body_content)
+    content = ''
+    title = ''
+    url = body_content.dig('repository', 'html_url')
+
+    if body_content['action'] == 'opened' && body_content['pull_request']
+      content = body_content.dig('pull_request', 'body')
+      title = 'New Pull Request'
+      url = body_content.dig('pull_request', 'html_url')
+    end
+
     {
-      content: '',
+      content: content,
       source: 'GitHub',
-      title: '',
-      url: content.dig('repository', 'html_url')
+      title: title,
+      url: url
     }
   end
 end
