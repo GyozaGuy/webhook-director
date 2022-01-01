@@ -13,18 +13,18 @@ channel = EM::Channel.new
 
 set :port, SERVER_PORT || 4567
 
-post '/' do
+post '/*' do
   body = JSON(request.body.read)
-  type = request.params['type']
   notification_content = nil
+  path = request.path[1..]
 
-  case type
+  case path
   when 'github'
     notification_content = Parsers.github(body)
   # when 'plex'
   #   notification_content = Parsers.plex(body)
   else
-    puts "Unknown type: #{type}"
+    puts "Unknown path: #{path}"
   end
 
   channel.push(notification_content) unless notification_content.nil?
